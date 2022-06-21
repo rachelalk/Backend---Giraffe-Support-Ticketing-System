@@ -8,7 +8,7 @@ export async function getTickets() {
 export async function postTicket(newTicket) {
   const { name, roomnumber, message, keywords } = newTicket;
   const data = await query(
-    `INSERT INTO tickets (name, roomnumber, message, keywords) VALUES ($1, $2, $3, $4) RETURNING *`,
+    `INSERT INTO tickets (name, roomnumber, message, keywords) VALUES ($1, $2, $3, $4) RETURNING *;`,
     [name, roomnumber, message, keywords]
   );
   return data.rows;

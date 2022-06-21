@@ -7,10 +7,11 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 
-app.get("/api", (req, res) => {
-  res.json({ message: "Hi" });
-});
+// app.get("/api", (req, res) => {
+//   res.json({ message: "Hi" });
+// });
 
+    app.use(express.json());
 
 
     app.use("/tickets", router);
