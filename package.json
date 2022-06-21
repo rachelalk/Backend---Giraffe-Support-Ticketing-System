@@ -2,7 +2,7 @@
   "name": "w9_backend-project-reactive-giraffe",
   "version": "1.0.0",
   "description": "[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=8036243&assignment_repo_type=AssignmentRepo) # National Bootcamp - Week Nine Project Brief",
-  "main": "index.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
     "start": "node -r dotenv/config app.js",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/SchoolOfCode/w9_backend-project-reactive-giraffe#readme",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "pg": "^8.7.3"

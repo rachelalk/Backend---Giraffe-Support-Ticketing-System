@@ -9,7 +9,7 @@
 
 <!-- 2. Install packages : express, pg, nodemon, dotenv -->
 
-3. Sort imports/exports
+<!-- 3. Sort imports/exports
 
 4. Set up package syntax 
 
@@ -17,8 +17,11 @@
 
 6. Build routes
 
-7. Build models
+7. Build models -->
 
 8. Construct and populate tables
 
 9. Link up to front end
+
+1. Backend package.json - changed 'main' from index.js to app.js
+2. Frontend package.json - added 'proxy'
