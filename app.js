@@ -2,6 +2,8 @@ import express from "express";
 
 import router from "./routes/tickets.js"
 
+import cors from "cors"
+
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -10,6 +12,7 @@ const app = express();
 // app.get("/api", (req, res) => {
 //   res.json({ message: "Hi" });
 // });
+    app.use(cors())
 
     app.use(express.json());
 
