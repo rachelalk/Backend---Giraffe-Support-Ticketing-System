@@ -25,10 +25,10 @@ export async function updateTicket(id, updatedTicket) {
 
 
 export async function updateStatus(id, updatedStatus) {
-  const { name, roomnumber, message, keywords, status } = updatedStatus;
+  const { status } = updatedStatus;
   const data = await query(
-    `UPDATE tickets SET status = $5 WHERE, ticket_id = $6 RETURNING *;`,
-    [name, roomnumber, message, keywords, status, Number(id)]
+    `UPDATE tickets SET status = $1 WHERE ticket_id = $2 RETURNING *;`,
+    [status, Number(id)]
   );
   return data.rows;
 }
