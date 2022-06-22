@@ -1,5 +1,7 @@
 import express from "express";
+import bodyParser from "body-parser"; 
 const router = express.Router();
+const jsonParser = bodyParser.json();
 
 import {
   getTickets,
@@ -13,7 +15,7 @@ router.get("/", async function (req, res) {
   res.json({ success: true, payload: result });
 });
 
-router.post("/", async function (req, res) {
+router.post("/", jsonParser, async function (req, res) {
   const newTicket = req.body;
   const result = await postTicket(newTicket);
   res.json({ success: true, payload: result });
