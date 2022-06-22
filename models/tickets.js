@@ -6,19 +6,19 @@ export async function getTickets() {
 }
 
 export async function postTicket(newTicket) {
-  const { name, roomnumber, message, keywords } = newTicket;
+  const { name, roomnumber, message, keywords, status } = newTicket;
   const data = await query(
-    `INSERT INTO tickets (name, roomnumber, message, keywords) VALUES ($1, $2, $3, $4) RETURNING *;`,
-    [name, roomnumber, message, keywords]
+    `INSERT INTO tickets (name, roomnumber, message, keywords, status) VALUES ($1, $2, $3, $4, $5) RETURNING *;`,
+    [name, roomnumber, message, keywords, status]
   );
   return data.rows;
 }
 
 export async function updateTicket(id, updatedTicket) {
-  const { name, roomnumber, message, keywords } = updatedTicket;
+  const { name, roomnumber, message, keywords, status } = updatedTicket;
   const data = await query(
-    `UPDATE tickets SET name = $1, roomnumber = $2, message = $3, keywords = $4 WHERE ticket_id = $5 RETURNING *;`,
-    [name, roomnumber, message, keywords, Number(id)]
+    `UPDATE tickets SET name = $1, roomnumber = $2, message = $3, keywords = $4 WHERE, status = $5 ticket_id = $6 RETURNING *;`,
+    [name, roomnumber, message, keywords, status, Number(id)]
   );
   return data.rows;
 }
