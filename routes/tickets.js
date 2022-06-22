@@ -7,6 +7,7 @@ import {
   getTickets,
   postTicket,
   updateTicket,
+  updateStatus,
   deleteTicket,
 } from "../models/tickets.js";
 
@@ -27,6 +28,16 @@ router.put("/:id", async function (req, res) {
   const result = await updateTicket(id, data);
   res.json({ success: true, payload: result });
 });
+
+
+  router.patch("/:id", async (req, res) => {
+    const id = Number(req.params.id);
+    const data = req.body;
+    const result = await updateStatus(id, data) 
+    res.json({ success: true, payload: result });
+  });
+
+
 
 router.delete("/:id", async function (req, res) {
   const id = Number(req.params.id);

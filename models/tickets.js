@@ -17,12 +17,22 @@ export async function postTicket(newTicket) {
 export async function updateTicket(id, updatedTicket) {
   const { name, roomnumber, message, keywords, status } = updatedTicket;
   const data = await query(
-    `UPDATE tickets SET name = $1, roomnumber = $2, message = $3, keywords = $4 WHERE, status = $5 ticket_id = $6 RETURNING *;`,
+    `UPDATE tickets SET name = $1, roomnumber = $2, message = $3, keywords = $4, status = $5 WHERE  ticket_id = $6 RETURNING *;`,
     [name, roomnumber, message, keywords, status, Number(id)]
   );
   return data.rows;
 }
 
+
+export async function updateStatus(id, updatedStatus) {
+  const { name, roomnumber, message, keywords, status } = updatedStatus;
+  const data = await query(
+    `UPDATE tickets SET status = $5 WHERE, ticket_id = $6 RETURNING *;`,
+    [name, roomnumber, message, keywords, status, Number(id)]
+  );
+  return data.rows;
+}
+  
 export async function deleteTicket(id) {
   console.log("delete");
   const data = await query(
