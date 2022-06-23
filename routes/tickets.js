@@ -30,7 +30,7 @@ router.put("/:id", async function (req, res) {
 });
 
 
-  router.patch("/:id", async (req, res) => {
+  router.patch("/:id", async function (req, res) {
     const id = Number(req.params.id);
     const data = req.body;
     const result = await updateStatus(id, data) 
