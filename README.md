@@ -1,23 +1,39 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=8036243&assignment_repo_type=AssignmentRepo)
-# National Bootcamp - Week Nine Project Brief
+README
 
-For your project, you’ll be using what you’ve learned on the course so far to try and improve the lives of your users. In this case, the users will be close to home: bootcampers!
+DESCRIPTION
 
-To do this, you’ll need to take the time to understand your user (a bootcamper), their experiences, and their problems. Specifically, it might be good to focus on how to enhance the remote experience of a bootcamper, or what can help them with the vast amount of learning there is to do as a new developer. What do they need? What problem might they have that your application could solve for them? How can you get into the mindset of your user and keep them at the centre of your problem-solving?
+Giraffe Support was the authors' Week 9 project for the School of Code (Cohort 12) Bootcamp, built with a PERN stack. They were tasked to build an application that fixed an issue faced by bootcamp participants (the full set of instructions can be found here: https://docs.google.com/document/d/e/2PACX-1vQMhiGaIX9rMuug3C7A-3IB1azhWRvr-i3DF3zeAAyeBXekzy0TthYBcOe9f_P0CrJL6bJ2edqe8Gb9/pub).
 
-The high level outcomes from this project should be:
+Reactive Giraffe identified issues with the current technical help request system - for requests submitted during workshops and other tasks. They seaked to streamline the request-response system for both coaches and bootcampers by making a straighforward and easy-to-manage system: 
+- To see how many people were waiting for help at a glance 
+- To see how long people had been waiting for help 
+- To mark the completion status of people's help requests (waiting, in-progress or done) 
+- To collect data on request topics
 
-- A minimum viable product (MVP) showcasing an innovative full stack application which meets the user need you’ve identified
-- A presentation, complete with how you worked as a team and a demonstration of the project
+This backend folder serves w9_frontend-project-reactive-giraffe and enables server-side and database handling to run Giraffe Support.
 
-Your project application might include the following:
+INSTALLATION INSTRUCTIONS
 
-- Include a user experience created in React
-- Build a REST API which is used by your front-end
-- Be supported by a Postgresql database with multiple tables
-- Be built and managed in an agile way
-- Utilise testing for ensuring robust code
+1. Set up database for postgreSQL (the authors used Heroku https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 
-Remember, you only have a few days to code a solution, so being agile is key. That means brainstorming what you want to build, and working in sprints to deliver value each time. After each sprint, you can reassess and either continue on course or iterate towards a better solution. Have a plan which is incremental steps, rather than all or nothing.
+2. Initiate node package manager:
 
-Click the link to see the [Project Guidelines](https://github.com/SchoolOfCode/project-guidelines/blob/master/project-week.md)
+        npm i
+
+3. Configure environment modules (.env)  with database credentials:
+        
+        PGUSER="text"
+        PGHOST="text"
+        PGDATABASE="text"
+        PGPASSWORD="text"
+        PGPORT=1111
+
+4. Create and populate tables:
+
+        npm run create
+
+        npm run populate
+
+5. Run server:
+
+        npm start
