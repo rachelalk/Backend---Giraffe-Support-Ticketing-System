@@ -28,3 +28,5 @@ res.status(500).json(err);
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
+
+export default app;
