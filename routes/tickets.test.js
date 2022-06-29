@@ -3,7 +3,7 @@ import supertest from 'supertest';
 import { test, expect } from "@jest/globals";
 import app from "../app.js"
 
-
+// NOTES: For PUT, PATCH and DELETE - update route (id) depending on table status
 describe('GET all tickets', () => {
   test('returns all tickets', async () => {
     const res = await request(app).get('/tickets');
@@ -22,7 +22,7 @@ describe("POST ticket", () => {
         roomnumber: "1",
         message: "Help me writing a test",
         keywords: "jest, supertest",
-        status: "waiting"
+        status: "waiting",
       });
     const actual = response.body;
     const expected = {
@@ -33,7 +33,8 @@ describe("POST ticket", () => {
         roomnumber: "1",
         message: "Help me writing a test",
         keywords: "jest, supertest",
-        status: "waiting"
+        status: "waiting",
+        ticket_id: expect.any(Number)
         },
       ],
     };
@@ -41,10 +42,10 @@ describe("POST ticket", () => {
   });
 });
 
-describe("PUT tickets/1", () => {
+describe("PUT tickets/11", () => {
   test("Checks if the ticket is updated", async function() {
       const response = await supertest(app)
-        .put("/tickets/1")
+        .put("/tickets/11")
         .expect(200)
         .send({
           name: "Joe Bloggs",
@@ -63,6 +64,7 @@ describe("PUT tickets/1", () => {
             message: "Help me writing a test",
             keywords: "jest, supertest",
             status: "waiting",
+            ticket_id: expect.any(Number),
           },
         ],
       };
@@ -70,10 +72,10 @@ describe("PUT tickets/1", () => {
   })
 });
 
-describe("PATCH tickets/1", () => {
+describe("PATCH tickets/11", () => {
   test("Checks if the status value is updated", async function () {
     const response = await supertest(app)
-      .patch("/tickets/1")
+      .patch("/tickets/11")
       .expect(200)
       .send({
         status: "in progress",
@@ -88,6 +90,7 @@ describe("PATCH tickets/1", () => {
           message: "Help me writing a test",
           keywords: "jest, supertest",
           status: "in progress",
+          ticket_id: expect.any(Number),
         },
       ],
     };
@@ -95,10 +98,10 @@ describe("PATCH tickets/1", () => {
   });
 });
 
-describe("DELETE tickets/1", () => {
+describe("DELETE tickets/11", () => {
   test("Checks if the ticket is deleted", async function() {
         const response = await supertest(app)
-            .delete("/tickets/1")
+            .delete("/tickets/11")
             .expect(200)
         const actual = response.body
         const expected = {
@@ -110,6 +113,7 @@ describe("DELETE tickets/1", () => {
               message: "Help me writing a test",
               keywords: "jest, supertest",
               status: "in progress",
+              ticket_id: expect.any(Number),
             },
           ],
         };
