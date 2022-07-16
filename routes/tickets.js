@@ -13,7 +13,7 @@ import {
 } from "../models/tickets.js";
 
 const corsOptions = {
-	origin: "https://giraffe-support.netlify.app/",
+	origin: "https://giraffe-support.netlify.app",
 	optionsSuccessStatus: 200,
 };
 
