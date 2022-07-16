@@ -11,19 +11,18 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
 
-// app.use(function (req, res, next) {
-// 	res.header(
-// 		"Access-Control-Allow-Origin",
-// 		"https://giraffe-support.netlify.app/"
-// 	);
-// 	res.header(
-// 		"Access-Control-Allow-Headers",
-// 		"Origin, X-Requested-With, Content-Type, Accept"
-// 	);
-// 	next();
-// });
+app.use(function (req, res, next) {
+	res.header(
+		"Access-Control-Allow-Origin",
+		"https://giraffe-support.netlify.app/"
+	);
+	res.header(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept"
+	);
+	next();
+});
 
 const corsOptions = {
 	origin: "https://giraffe-support.netlify.app",
