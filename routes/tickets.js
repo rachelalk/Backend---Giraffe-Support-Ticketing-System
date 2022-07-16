@@ -4,6 +4,8 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 import cors from "cors";
 
+const app = express;
+
 import {
 	getTickets,
 	postTicket,
@@ -11,6 +13,7 @@ import {
 	updateStatus,
 	deleteTicket,
 } from "../models/tickets.js";
+import app from "../app.js";
 
 const corsOptions = {
 	origin: "https://giraffe-support.netlify.app",
@@ -23,27 +26,31 @@ router.get("/", cors(corsOptions), async function (req, res) {
 	res.json({ success: true, payload: result });
 });
 
-router.post("/", cors(corsOptions), jsonParser, async function (req, res) {
+app.options ("/", cors())
+
+router.post("/", cors(), jsonParser, async function (req, res) {
 	const newTicket = req.body;
 	const result = await postTicket(newTicket);
 	res.json({ success: true, payload: result });
 });
 
-router.put("/:id", cors(corsOptions), async function (req, res) {
+app.options("/:id", cors());
+
+router.put("/:id", cors(), async function (req, res) {
 	const id = Number(req.params.id);
 	const data = req.body;
 	const result = await updateTicket(id, data);
 	res.json({ success: true, payload: result });
 });
 
-router.patch("/:id", cors(corsOptions), async function (req, res) {
+router.patch("/:id", cors(), async function (req, res) {
 	const id = Number(req.params.id);
 	const data = req.body;
 	const result = await updateStatus(id, data);
 	res.json({ success: true, payload: result });
 });
 
-router.delete("/:id", cors(corsOptions), async function (req, res) {
+router.delete("/:id", cors(), async function (req, res) {
 	const id = Number(req.params.id);
 	const result = await deleteTicket(id);
 	res.json({ success: true, payload: result });
