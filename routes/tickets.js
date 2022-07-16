@@ -4,7 +4,7 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 import cors from "cors";
 
-const app = express;
+
 
 import {
 	getTickets,
@@ -13,7 +13,7 @@ import {
 	updateStatus,
 	deleteTicket,
 } from "../models/tickets.js";
-import app from "../app.js";
+
 
 const corsOptions = {
 	origin: "https://giraffe-support.netlify.app",
@@ -26,7 +26,7 @@ router.get("/", cors(corsOptions), async function (req, res) {
 	res.json({ success: true, payload: result });
 });
 
-app.options ("/", cors())
+router.options ("/", cors())
 
 router.post("/", cors(), jsonParser, async function (req, res) {
 	const newTicket = req.body;
@@ -34,7 +34,7 @@ router.post("/", cors(), jsonParser, async function (req, res) {
 	res.json({ success: true, payload: result });
 });
 
-app.options("/:id", cors());
+router.options("/:id", cors());
 
 router.put("/:id", cors(), async function (req, res) {
 	const id = Number(req.params.id);
