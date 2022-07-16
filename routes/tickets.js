@@ -17,7 +17,6 @@ const corsOptions = {
 	optionsSuccessStatus: 200,
 };
 
-res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
 
 router.get("/", cors(corsOptions), async function (req, res) {
 	const result = await getTickets();
